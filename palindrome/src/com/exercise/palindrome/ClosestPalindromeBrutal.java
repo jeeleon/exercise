@@ -18,11 +18,13 @@ class ClosestPalindromeBrutal {
 	}
 
 	// Function return closest Palindrome number
-	public static int closestPalindrome(int num) {
+	public static int closestPalindrome(String input) {
+
+		int value = Integer.parseInt(input);
 
 		// Case1 : largest palindrome number
 		// which is smaller to given number
-		int RPNum = num - 1;
+		int RPNum = value - 1;
 
 		while (isPalindrome(Integer.toString(RPNum)) == false) {
 			RPNum--;
@@ -30,7 +32,7 @@ class ClosestPalindromeBrutal {
 
 		// Case 2 : smallest palindrome number
 		// which is greater than given number
-		int SPNum = num + 1;
+		int SPNum = value + 1;
 
 		while (isPalindrome(Integer.toString(SPNum)) == false) {
 			SPNum++;
@@ -39,7 +41,7 @@ class ClosestPalindromeBrutal {
 		int result = 0;
 
 		// Check absolute difference
-		if (Math.abs(num - SPNum) < Math.abs(num - RPNum)) {
+		if (Math.abs(value - SPNum) < Math.abs(value - RPNum)) {
 			result = SPNum;
 		} else {
 			result = RPNum;
@@ -50,9 +52,9 @@ class ClosestPalindromeBrutal {
 
 	// Driver code    
 	public static void main(String[] args) {
-		int n = 102;
+		String input = "102";
 		long start = System.nanoTime();
-		System.out.println(closestPalindrome(n));
+		System.out.println(closestPalindrome(input));
 		long finish = System.nanoTime();
 		long timeElapsed = finish - start;
 		System.out.println(timeElapsed);
